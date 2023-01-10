@@ -348,3 +348,8 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+MS Project Task Auditor/EnumTemplates.cs
+MS Project Task Auditor/EnumTemplates/CustomFieldsEnterprise.txt
+MS Project Task Auditor/EnumTemplates/CustomFieldsLookup.txt
+MS Project Task Auditor/EnumTemplates/ProjectReportValues.txt
+MS Project Task Auditor/EnumTemplates/PWAProjectList.txt
