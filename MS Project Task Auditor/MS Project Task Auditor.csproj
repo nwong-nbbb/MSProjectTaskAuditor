@@ -71,7 +71,6 @@
     <Compile Include="ProjectMonitorInterface.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ResourceTable.cs" />
     <Compile Include="TaskUIDReport.cs" />
   </ItemGroup>
   <ItemGroup>

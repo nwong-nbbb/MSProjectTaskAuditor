@@ -37,21 +37,21 @@ namespace MS_Project_Task_Auditor
         // Project UID and Cost Code report
         public static int WriteToExcel(this Project currentProject, Worksheet activeSheet, int currentLine, List<ProjectReportValues> reportValueList)
         {
+            int rowBase = currentLine;
             int rowIndex = currentLine;
 
             // Set Headers
             if (rowIndex == 1)
             { activeSheet.WriteHeaders(reportValueList); rowIndex++; }
 
-            List<string> taskValueList = new List<string>();
+            int taskCount = currentProject.Tasks.Count + 1;
 
-            // Write Task Details
-            foreach (Microsoft.Office.Interop.MSProject.Task nextTask in currentProject.Tasks)
+            Parallel.For(1, taskCount, i =>
             {
-                taskValueList = nextTask.GetValue(reportValueList);
-                activeSheet.WriteToRow(rowIndex, taskValueList);
+                int parallelIndex = rowBase + currentProject.Tasks[i].ID;
+                activeSheet.WriteToRow(parallelIndex, currentProject.Tasks[i].GetValue(reportValueList));
                 rowIndex++;
-            }
+            });
 
             return rowIndex;
         }
@@ -77,7 +77,7 @@ namespace MS_Project_Task_Auditor
         public static void WriteToRow(this Worksheet activeSheet, int rowIndex, List<string> rowValueList)
         {
             int columnIndex = 1;
-            foreach(string nextValue in rowValueList)
+            foreach (string nextValue in rowValueList)
             { activeSheet.Cells[rowIndex, columnIndex] = nextValue; columnIndex++; }
         }
 
