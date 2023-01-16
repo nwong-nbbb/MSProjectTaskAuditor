@@ -16,10 +16,12 @@ namespace MS_Project_Task_Auditor
 
         static void Main(string[] args)
         {
+            #if DEBUG
             bool runBackup = false;
             if (runBackup) 
             { MSProjectExtensions.DailyBackup(); }
-            
+            #endif
+
             TaskUIDReport.RunAll();
 
             Console.WriteLine();

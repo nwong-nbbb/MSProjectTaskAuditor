@@ -44,12 +44,7 @@ namespace MS_Project_Task_Auditor
             activeProjectSession.OptionsSave(AutomaticSave: false, AutomaticSavePrompt: false);
             Project currentProject = initialProject;
 
-            List<ProjectReportValues> reportValueList = new List<ProjectReportValues>()
-            { 
-                ProjectReportValues.projectName, ProjectReportValues.projectID, ProjectReportValues.taskUID, ProjectReportValues.detailCode, 
-                ProjectReportValues.releasedStatus, ProjectReportValues.resourceCount, ProjectReportValues.workHours, ProjectReportValues.taskDescription,
-                ProjectReportValues.isParent, ProjectReportValues.costCode
-            };
+            List<ProjectReportValues> reportValueList = ((ProjectReportValues[])Enum.GetValues(typeof(ProjectReportValues))).ToList();
 
             Microsoft.Office.Interop.Excel.Application excelSession = new Microsoft.Office.Interop.Excel.Application();
             excelSession.Visible = true;
